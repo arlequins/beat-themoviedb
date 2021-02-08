@@ -33,12 +33,12 @@
 
 ## Check List
 
-[x] base(package and so on)
-[x] redux(api)
-[x] package and express
-[ ] screen(material-ui)
-[ ] deploy
-[ ] last check
+- [x] base(package and so on)
+- [x] redux(api)
+- [x] package and express
+- [ ] screen(material-ui)
+- [ ] deploy
+- [ ] last check
 
 ## run command
 
