@@ -1,0 +1,23 @@
+{
+  "test": {
+    "DOMAIN": "http://localhost:5000",
+    "CDN_URI": "http://localhost:5000",
+    "API_ENDPOINT_URL": "",
+    "API_CLIENT_ID": "",
+    "DEFAULT_LANG": "ja"
+  },
+  "development": {
+    "DOMAIN": "http://localhost:5000",
+    "CDN_URI": "http://localhost:5000",
+    "API_ENDPOINT_URL": "",
+    "API_CLIENT_ID": "",
+    "DEFAULT_LANG": "ja"
+  },
+  "production": {
+    "DOMAIN": "http://localhost:3000",
+    "CDN_URI": "http://localhost:3000",
+    "API_ENDPOINT_URL": "",
+    "API_CLIENT_ID": "",
+    "DEFAULT_LANG": "ja"
+  }
+}
