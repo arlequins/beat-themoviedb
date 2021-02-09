@@ -37,6 +37,7 @@
 - [x] redux(api)
   - [x] search: search results
   - [x] detail: detail info for movie
+  - [x] api response types
 - [x] package and express
 - [ ] screen(material-ui)
   - [ ] top: search input only
