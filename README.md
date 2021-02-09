@@ -43,7 +43,7 @@
   - [ ] search: search results
   - [ ] detail: detail info for movie
   - [ ] favorite and unfavorite a movie: local storage
-- [ ] deploy
+- [ ] package release version
 - [ ] last check
 
 
