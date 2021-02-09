@@ -35,8 +35,8 @@
 
 - [x] base(package and so on)
 - [x] redux(api)
-  - [ ] search: search results
-  - [ ] detail: detail info for movie
+  - [x] search: search results
+  - [x] detail: detail info for movie
 - [x] package and express
 - [ ] screen(material-ui)
   - [ ] top: search input only
