@@ -1,6 +1,7 @@
 declare module 'common' {
 
   import { RouteConfig } from 'react-router-config'
+  import { ErrorResponse, ResMovieDetails, ResSearchMovies } from 'response'
 
   interface EnvVariables {
     NODE_ENV: string
@@ -49,6 +50,18 @@ declare module 'common' {
     [key: string]: string[]
   }
 
+  interface StateSearchMovies {
+    statusCode: number,
+    result: ResSearchMovies | undefined,
+    error: ErrorResponse,
+  }
+
+  interface StateMovieDetails {
+    statusCode: number,
+    result: ResMovieDetails | undefined,
+    error: ErrorResponse,
+  }
+
   interface State extends PreloadedState {
     [key: string]: any
 
@@ -56,6 +69,9 @@ declare module 'common' {
     status?: number
 
     appConfig?: AppConfig
+
+    searchMovies?: StateSearchMovies,
+    movieDetails?: StateMovieDetails,
   }
 
   interface LanguagePack {

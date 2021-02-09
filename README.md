@@ -35,10 +35,42 @@
 
 - [x] base(package and so on)
 - [x] redux(api)
+  - [x] search: search results
+  - [x] detail: detail info for movie
+  - [x] api response types
 - [x] package and express
 - [ ] screen(material-ui)
-- [ ] deploy
+  - [ ] top: search input only
+  - [ ] search: search results
+  - [ ] detail: detail info for movie
+  - [ ] favorite and unfavorite a movie: local storage
+- [ ] package release version
 - [ ] last check
+
+
+## api info
+
+
+### auth
+- API Key (v3 auth): 13c535b5d2febad441bee0e33e041239
+- Example API Request: https://api.themoviedb.org/3/movie/550?api_key=13c535b5d2febad441bee0e33e041239
+- API Read Access Token (v4 auth): eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxM2M1MzViNWQyZmViYWQ0NDFiZWUwZTMzZTA0MTIzOSIsInN1YiI6IjYwMjFkZTE5OWQyYjYzMDAzZTYyNjBjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-AkCJ7pxmZTbVER7FFZUe8P80vxSsjtg-vP1lDFKtak
+
+
+### example request
+
+
+#### list
+- https://developers.themoviedb.org/3/search/search-movies
+  - https://api.themoviedb.org/3/search/movie?api_key=13c535b5d2febad441bee0e33e041239&query=a&language=ja
+  - https://api.themoviedb.org/3/search/movie?api_key=13c535b5d2febad441bee0e33e041239&query=a&language=en
+&language=de
+
+
+#### detail
+- https://developers.themoviedb.org/3/movies/get-movie-details
+  - https://api.themoviedb.org/3/movie/{movie_id}?api_key={apikey}
+
 
 ## run command
 

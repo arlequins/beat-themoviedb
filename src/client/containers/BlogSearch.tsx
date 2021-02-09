@@ -2,17 +2,17 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // action
-import { addMovieDetails } from 'client/actions'
+import { addSearchMovies } from 'client/actions'
 
 // components
 import Loading from 'client/components/fragments/common/Loading'
 
 // interface
-import { AllProps, AppConfig, State, StateMovieDetails } from 'common'
+import { AllProps, AppConfig, State, StateSearchMovies } from 'common'
 
-const BlogDetail: React.FC<AllProps> = () => {
+const BlogSearch: React.FC<AllProps> = () => {
 	const {
-		movieDetails = {} as StateMovieDetails,
+		searchMovies = {} as StateSearchMovies,
 		appConfig = {
 			lang: 'EN',
 		} as AppConfig,
@@ -22,29 +22,29 @@ const BlogDetail: React.FC<AllProps> = () => {
 
 	useEffect(() => {
 		dispatch(
-			addMovieDetails({
-				movie_id: 550,
+			addSearchMovies({
+				query: 'a',
 				language: appConfig.lang.toLowerCase(),
 			})
 		)
 	}, [])
 
-	if (!movieDetails.result) {
+	if (!searchMovies.result) {
 		return <Loading text={'LOADING DATA'} />
 	}
 
-	if (movieDetails.statusCode !== 200) {
+	if (searchMovies.statusCode !== 200) {
 		return <div>error</div>
 	}
 
-	const { result } = movieDetails
+	const { result } = searchMovies
 
 	return (
 		<div>
-			<h1>BLOG DETAIL</h1>
-			<h2>{result.title}</h2>
+			<h1>BLOG SEARCH</h1>
+			<h2>{result.page}</h2>
 		</div>
 	)
 }
 
-export default BlogDetail
+export default BlogSearch

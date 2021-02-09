@@ -15,13 +15,3 @@ export const frontendCreateStore = (initialState: State): any => {
 	epicMiddleware.run(rootEpic)
 	return store
 }
-
-export const backendCreateStore = (initialState: State): any => {
-	// const epicMiddleware = createEpicMiddleware()
-	// const enhancer = compose(applyMiddleware(epicMiddleware))
-
-	const store = createStore(createRootReducer(), initialState)
-
-	// epicMiddleware.run(rootEpic)
-	return store
-}

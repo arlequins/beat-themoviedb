@@ -17,7 +17,6 @@ export const frontendCreateStore = (initialState: State): any => {
 			((window as unknown) as ExtendedWindow).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
 	)
 
-	// tslint:disable
 	if (hasDevtools) {
 		enhancer = ((window as unknown) as ExtendedWindow).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(
 			compose(applyMiddleware(epicMiddleware, createLogger()))
