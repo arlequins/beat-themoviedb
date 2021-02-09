@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 import { Action } from 'common'
 import { ActionsObservable } from 'redux-observable'
-import { MovieDetails } from 'response'
+import { ResMovieDetails } from 'response'
 import { TEpic } from 'types/settings'
 
 import { defer, Observable, of } from 'rxjs'
@@ -23,7 +23,7 @@ export const addMovieDetailsEpic: TEpic = (
 	action$.ofType(MOVIE_DETAILS_REQUEST).pipe(
 		mergeMap((action: MovieDetailsRequestAction) =>
 			defer(() => requestMovieDetails(action.payload)).pipe(
-				map((movieDetails: MovieDetails) => setMovieDetails(movieDetails)),
+				map((responseMovieDetails: ResMovieDetails) => setMovieDetails(responseMovieDetails)),
 				catchError(
 					(error: AxiosError): Observable<MovieDetailsFailureAction> => of(errorMovieDetails(error))
 				)

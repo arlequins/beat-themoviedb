@@ -9,12 +9,15 @@ import {
 
 export default {
 	reducersMapObject: {
-		[SEARCH_MOVIES_SUCCESS]: (state: State, { searchMovies }: SearchMoviesSuccessAction) => {
+		[SEARCH_MOVIES_SUCCESS]: (
+			state: State,
+			{ responseSearchMovies }: SearchMoviesSuccessAction
+		) => {
 			return {
 				...state,
 				searchMovies: {
 					statusCode: 200,
-					result: searchMovies,
+					result: responseSearchMovies,
 					error: {},
 				},
 			}

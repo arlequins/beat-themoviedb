@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios'
 import { Action } from 'common'
-import { ReqSearchMoviesPayload, SearchMovies } from 'response'
+import { ReqSearchMoviesPayload, ResSearchMovies } from 'response'
 
 export const SEARCH_MOVIES_REQUEST = 'SEARCH_MOVIES_REQUEST'
 export const SEARCH_MOVIES_SUCCESS = 'SEARCH_MOVIES_SUCCESS'
@@ -10,7 +10,7 @@ export interface SearchMoviesRequestAction extends Action<typeof SEARCH_MOVIES_R
 	payload: ReqSearchMoviesPayload
 }
 export interface SearchMoviesSuccessAction extends Action<typeof SEARCH_MOVIES_SUCCESS> {
-	searchMovies: SearchMovies[]
+	responseSearchMovies: ResSearchMovies
 }
 export interface SearchMoviesFailureAction extends Action<typeof SEARCH_MOVIES_FAILURE> {
 	error: AxiosError
@@ -21,8 +21,10 @@ export const addSearchMovies = (payload: ReqSearchMoviesPayload): SearchMoviesRe
 	payload,
 })
 
-export const setSearchMovies = (searchMovies: SearchMovies[]): SearchMoviesSuccessAction => {
-	return { type: SEARCH_MOVIES_SUCCESS, searchMovies }
+export const setSearchMovies = (
+	responseSearchMovies: ResSearchMovies
+): SearchMoviesSuccessAction => {
+	return { type: SEARCH_MOVIES_SUCCESS, responseSearchMovies }
 }
 
 export const errorSearchMovies = (error: AxiosError): SearchMoviesFailureAction => {

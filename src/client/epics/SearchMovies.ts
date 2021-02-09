@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 import { Action } from 'common'
 import { ActionsObservable } from 'redux-observable'
-import { SearchMovies } from 'response'
+import { ResSearchMovies } from 'response'
 import { TEpic } from 'types/settings'
 
 import { defer, Observable, of } from 'rxjs'
@@ -23,7 +23,7 @@ export const addSearchMoviesEpic: TEpic = (
 	action$.ofType(SEARCH_MOVIES_REQUEST).pipe(
 		mergeMap((action: SearchMoviesRequestAction) =>
 			defer(() => requestSearchMovies(action.payload)).pipe(
-				map((searchMovies: SearchMovies[]) => setSearchMovies(searchMovies)),
+				map((responseSearchMovies: ResSearchMovies) => setSearchMovies(responseSearchMovies)),
 				catchError(
 					(error: AxiosError): Observable<SearchMoviesFailureAction> => of(errorSearchMovies(error))
 				)

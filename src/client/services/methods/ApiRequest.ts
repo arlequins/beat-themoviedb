@@ -16,12 +16,10 @@ export default methods.reduce(
 				Accept: 'application/json',
 				'Content-Type': 'application/x-www-form-urlencoded',
 			}
-			const query = requestBody
-				? queryString.stringify({
-						api_key: apiKey,
-						...requestBody,
-				  })
-				: ''
+			const query = queryString.stringify({
+				api_key: apiKey,
+				...requestBody,
+			})
 			const requestUrl =
 				method === 'get' ? (query.length > 0 ? `${endpoint}?${query}` : endpoint) : endpoint
 
