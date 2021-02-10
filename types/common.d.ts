@@ -79,11 +79,29 @@ declare module 'common' {
     info: {
       headerTitle: string
       footerTitle: string
+      topTitle: string
+      searchTitle: string
+      countText: string
+      searchLabel: string
+      submitBtn: string
+      searchPlaceholder: string
     }
     head: {
       title: string
       desc: string
       keywords: string[]
     }
+  }
+
+  interface ParamsBlogSearch {
+    keyword: string
+  }
+
+  interface ParamsBlogDetail {
+    id: string
+  }
+
+  interface QueryStringBlogSearch {
+    page: number
   }
 }

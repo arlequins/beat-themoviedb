@@ -6,6 +6,12 @@ const LANGUAGE_PACKS: any = {
 		info: {
 			headerTitle: 'BEAT',
 			footerTitle: 'Beat Project',
+			topTitle: 'WHICH MOVIE?',
+			searchTitle: 'Search Results',
+			countText: 'Count',
+			searchLabel: 'Search',
+			submitBtn: 'submit',
+			searchPlaceholder: 'type here',
 		},
 		head: {
 			title: 'BEAT',
@@ -17,6 +23,12 @@ const LANGUAGE_PACKS: any = {
 		info: {
 			headerTitle: 'BEAT',
 			footerTitle: 'Beat Project',
+			topTitle: 'WHICH MOVIE?',
+			searchTitle: 'Search Results',
+			countText: 'Count',
+			searchLabel: 'Search',
+			submitBtn: 'submit',
+			searchPlaceholder: 'type here',
 		},
 		head: {
 			title: 'BEAT',
@@ -28,6 +40,12 @@ const LANGUAGE_PACKS: any = {
 		info: {
 			headerTitle: 'BEAT',
 			footerTitle: 'Beat Project',
+			topTitle: 'WHICH MOVIE?',
+			searchTitle: 'Search Results',
+			countText: 'Count',
+			searchLabel: 'Search',
+			submitBtn: 'submit',
+			searchPlaceholder: 'type here',
 		},
 		head: {
 			title: 'BEAT',

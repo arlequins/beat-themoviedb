@@ -1,32 +1,35 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 
+import Container from '@material-ui/core/Container'
+import CssBaseline from '@material-ui/core/CssBaseline'
+
 // libraries
 import { FLAGSHIP_URL, STATIC_URL } from 'client/constants/Env'
-import { LANGUAGE_PACK } from 'client/constants/Lang'
+import { initialState } from 'client/store/state'
 import { renderRoutes, RouteConfig } from 'react-router-config'
 
 // components
+import { useCurrentLanguagePack } from 'client/components/custom/hooks'
+import Footer from 'client/components/fragments/common/Footer'
+import Header from 'client/components/fragments/common/Header'
 import Loading from 'client/components/fragments/common/Loading'
 
 // interfaces
-import { AllProps, AppConfig, State } from 'common'
+import { AllProps, State } from 'common'
 import { useSelector } from 'react-redux'
 
 const App: React.FC<AllProps> = () => {
-	const {
-		appConfig = {
-			lang: 'EN',
-		} as AppConfig,
-		route = {} as RouteConfig,
-	} = useSelector((state: State) => state)
-	const head = LANGUAGE_PACK(appConfig.lang).head
+	const { route = initialState.route as RouteConfig } = useSelector((state: State) => state)
+	const { text, status } = useCurrentLanguagePack()
 	const currentUri = `${window.location.origin}${window.location.pathname}`
 
 	return (
 		<main>
+			{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+			<CssBaseline />
 			<Helmet>
-				<html lang={appConfig.lang.toLocaleLowerCase()} />
+				<html lang={status} />
 				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 				<meta
 					name="viewport"
@@ -43,23 +46,29 @@ const App: React.FC<AllProps> = () => {
 				<link rel="apple-touch-icon" href={`${STATIC_URL}/images/icon/apple-touch-icon.png`} />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
-				<meta name="apple-mobile-web-app-title" content={head.title} />
+				<meta name="apple-mobile-web-app-title" content={text.head.title} />
 				<meta name="theme-color" content="#000000" />
 				<link rel="manifest" href={`${FLAGSHIP_URL}/manifest.json`} />
-				<title>{head.title}</title>
-				<meta name="description" content={head.desc} />
-				<meta property="og:title" content={head.title} />
-				<meta property="og:description" content={head.desc} />
+				<title>{text.head.title}</title>
+				<meta name="description" content={text.head.desc} />
+				<meta property="og:title" content={text.head.title} />
+				<meta property="og:description" content={text.head.desc} />
 				<meta property="og:url" content={currentUri} />
-				<meta name="twitter:title" content={head.title} />
-				<meta name="twitter:description" content={head.desc} />
+				<meta name="twitter:title" content={text.head.title} />
+				<meta name="twitter:description" content={text.head.desc} />
 				<meta name="twitter:url" content={currentUri} />
-				<meta name="keywords" content={head.keywords.join(',')} />
+				<meta name="keywords" content={text.head.keywords.join(',')} />
 				<link rel="canonical" href={currentUri} />
 			</Helmet>
-			<React.Suspense fallback={<Loading text={'LOADING COMPONENTS'} />}>
-				{route && renderRoutes(route.routes)}
-			</React.Suspense>
+			<React.Fragment>
+				<Container maxWidth="lg">
+					<Header />
+					<React.Suspense fallback={<Loading text={'LOADING COMPONENTS'} />}>
+						{route && renderRoutes(route.routes)}
+					</React.Suspense>
+				</Container>
+				<Footer />
+			</React.Fragment>
 		</main>
 	)
 }

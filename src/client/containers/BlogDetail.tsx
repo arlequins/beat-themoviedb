@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // action
@@ -6,9 +6,11 @@ import { addMovieDetails } from 'client/actions'
 
 // components
 import Loading from 'client/components/fragments/common/Loading'
+import ErrorPage from 'client/containers/common/ErrorPage'
 
 // interface
-import { AllProps, AppConfig, State, StateMovieDetails } from 'common'
+import { AllProps, AppConfig, ParamsBlogDetail, State, StateMovieDetails } from 'common'
+import { useParams } from 'react-router'
 
 const BlogDetail: React.FC<AllProps> = () => {
 	const {
@@ -20,21 +22,37 @@ const BlogDetail: React.FC<AllProps> = () => {
 
 	const dispatch = useDispatch()
 
+	const { id }: ParamsBlogDetail = useParams()
+
+	const parseId = Number.parseInt(id, 10)
+
+	const [moveId, setMoveId] = useState(-1)
+
 	useEffect(() => {
-		dispatch(
-			addMovieDetails({
-				movie_id: 550,
-				language: appConfig.lang.toLowerCase(),
-			})
-		)
-	}, [])
+		if (moveId !== -1) {
+			dispatch(
+				addMovieDetails({
+					movie_id: moveId,
+					language: appConfig.lang.toLowerCase(),
+				})
+			)
+		}
+	}, [moveId])
+
+	if (!Number.isInteger(parseId)) {
+		return <ErrorPage text={`${parseId}`} />
+	}
+
+	if (parseId > 0 && moveId === -1) {
+		setMoveId(parseId)
+	}
 
 	if (!movieDetails.result) {
-		return <Loading text={'LOADING DATA'} />
+		return <Loading text="LOADING DATA" />
 	}
 
 	if (movieDetails.statusCode !== 200) {
-		return <div>error</div>
+		return <ErrorPage text={`${movieDetails.statusCode}`} />
 	}
 
 	const { result } = movieDetails

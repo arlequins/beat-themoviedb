@@ -40,8 +40,8 @@
   - [x] api response types
 - [x] package and express
 - [ ] screen(material-ui)
-  - [ ] top: search input only
-  - [ ] search: search results
+  - [x] top: search input only
+  - [x] search: search results
   - [ ] detail: detail info for movie
   - [ ] favorite and unfavorite a movie: local storage
 - [ ] package release version
@@ -71,6 +71,11 @@
 - https://developers.themoviedb.org/3/movies/get-movie-details
   - https://api.themoviedb.org/3/movie/{movie_id}?api_key={apikey}
 
+
+### ref
+```
+https://material-ui.com/getting-started/templates/
+```
 
 ## run command
 

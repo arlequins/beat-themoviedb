@@ -10,8 +10,9 @@ export const env: EnvVariables = {
 	VERSION: process.env.VERSION ? process.env.VERSION : '1.0.0',
 }
 
-export const CDN_URL = `${env.CDN_URI}/assets/${env.VERSION}`
-export const STATIC_URL = `${env.CDN_URI}/static`
-export const FLAGSHIP_URL = `${env.CDN_URI}/flagship`
+export const CDN_URL = `${env.DOMAIN}/assets/${env.VERSION}`
+export const NO_IMAGE = `${env.DOMAIN}/images/no-image.png`
+export const STATIC_URL = `${env.DOMAIN}/static`
+export const FLAGSHIP_URL = `${env.DOMAIN}/flagship`
 export const DEFAULT_LANG = env.DEFAULT_LANG.toUpperCase()
 export const IS_DEVELOPMENT = env.NODE_ENV === 'development'

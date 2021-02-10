@@ -1,14 +1,23 @@
 import React from 'react'
 
+import Container from '@material-ui/core/Container'
+
+// components
+import BlogTopPart from 'client/components/pages/BlogTopPart'
+
+// interfaces
+import { AllProps } from 'common'
+
 // common sass
 // tslint:disable:no-import-side-effect
 import 'scss/top.scss'
 
-// interface
-import { AllProps } from 'common'
-
 const BlogTop: React.FC<AllProps> = () => {
-	return <h1>BLOG TOP</h1>
+	return (
+		<Container component="main" maxWidth="xs">
+			<BlogTopPart />
+		</Container>
+	)
 }
 
 export default BlogTop
