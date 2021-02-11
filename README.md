@@ -43,7 +43,7 @@
   - [x] top: search input only
   - [x] search: search results
   - [x] detail: detail info for movie
-  - [ ] favorite and unfavorite a movie: local storage
+  - [x] favorite and unfavorite a movie: local storage
 - [ ] package release version
 - [ ] last check
 
