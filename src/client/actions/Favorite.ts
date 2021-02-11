@@ -1,6 +1,15 @@
 import { AxiosError } from 'axios'
 import { Action } from 'common'
-import { ReqAddFavoritePayload, ReqCreateFavoritePayload, ReqListFavoritePayload, ReqRemoveFavoritePayload, ResAddFavorite, ResCreateFavorite, ResListFavorite, ResRemoveFavorite } from 'response'
+import {
+	ReqAddFavoritePayload,
+	ReqCreateFavoritePayload,
+	ReqListFavoritePayload,
+	ReqRemoveFavoritePayload,
+	ResAddFavorite,
+	ResCreateFavorite,
+	ResListFavorite,
+	ResRemoveFavorite,
+} from 'response'
 
 export const FAVORITE_CREATE_REQUEST = 'FAVORITE_CREATE_REQUEST'
 export const FAVORITE_CREATE_SUCCESS = 'FAVORITE_CREATE_SUCCESS'
@@ -47,9 +56,7 @@ export const addFavorite = (payload: ReqAddFavoritePayload): FavoriteAddRequestA
 	type: FAVORITE_ADD_REQUEST,
 	payload,
 })
-export const setAddFavorite = (
-	responseAddFavorite: ResAddFavorite
-): FavoriteAddSuccessAction => {
+export const setAddFavorite = (responseAddFavorite: ResAddFavorite): FavoriteAddSuccessAction => {
 	return { type: FAVORITE_ADD_SUCCESS, responseAddFavorite }
 }
 export const errorAddFavorite = (error: AxiosError): FavoriteAddFailureAction => {

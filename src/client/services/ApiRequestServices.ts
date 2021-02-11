@@ -43,11 +43,44 @@ export const requestAddFavorite = async (
 export const requestCreateFavorite = async (
 	payload: ReqCreateFavoritePayload
 ): Promise<ResCreateFavorite> => {
-	const endpoint = `${env.API_ENDPOINT_URL}/list`
-	return await ApiRequest.post(endpoint, env.API_CLIENT_ID, {
-		query: payload.query,
-		body: payload.body,
+
+	// const requestTokenRequestEndpoint = `${env.API_ENDPOINT_URL}/authentication/token/new`
+	// const createRequestTokenRequest = await ApiRequest.get(requestTokenRequestEndpoint, env.API_CLIENT_ID, {
+	// 	query: {},
+	// })
+
+	// if (!createRequestTokenRequest.success) {
+	// 	throw new Error(createRequestTokenRequest)
+	// }
+
+	// const requestToken = createRequestTokenRequest
+
+	const requestToken = payload.auth.requestToken
+	const sessionRequestEndpoint = `${env.API_ENDPOINT_URL}/authentication/session/new`
+	const createSessionRequest = await ApiRequest.post(sessionRequestEndpoint, env.API_CLIENT_ID, {
+		body: {
+			request_token: requestToken,
+		},
 	})
+
+	if (!createSessionRequest.success) {
+		throw new Error(createSessionRequest)
+	}
+
+	const sessionId = createSessionRequest.session_id
+
+	const endpoint = `${env.API_ENDPOINT_URL}/list`
+	const response = await ApiRequest.post(endpoint, env.API_CLIENT_ID, {
+		query: {
+			session_id: sessionId,
+		},
+		body: {
+      name: payload.body.name,
+      description: payload.body.description,
+      language: payload.body.language,
+		},
+	})
+	return response
 }
 export const requestListFavorite = async (
 	payload: ReqListFavoritePayload

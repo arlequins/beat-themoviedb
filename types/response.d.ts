@@ -25,9 +25,9 @@ declare module 'response' {
   }
 
   interface ReqCreateFavoritePayload extends RequestPayload {
-    query: {
-      session_id: string
-    }
+    auth: {
+      requestToken: string
+    },
     body: {
       name?: string
       description?: string
@@ -36,6 +36,10 @@ declare module 'response' {
   }
 
   interface ResCreateFavorite extends ResCRUD {
+    session_id: string
+    list_id: number
+    success: boolean
+    expires_at: string
   }
 
   interface ReqRemoveFavoritePayload extends RequestPayload {

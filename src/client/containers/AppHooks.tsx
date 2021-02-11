@@ -1,11 +1,17 @@
 import * as React from 'react'
+import { useEffect } from 'react'
 import Helmet from 'react-helmet'
+import { useSelector } from 'react-redux'
 
 import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { makeStyles } from '@material-ui/core/styles'
 
+// action
+// import { createFavorite as actionCreateFavorite } from 'client/actions'
+
 // libraries
+import { LOCAL_STORAGE_KEY } from 'client/constants'
 import { FLAGSHIP_URL, STATIC_URL } from 'client/constants/Env'
 import { initialState } from 'client/store/state'
 import { renderRoutes, RouteConfig } from 'react-router-config'
@@ -17,8 +23,7 @@ import Header from 'client/components/fragments/common/Header'
 import Loading from 'client/components/fragments/common/Loading'
 
 // interfaces
-import { AllProps, State } from 'common'
-import { useSelector } from 'react-redux'
+import { AllProps, SessionInfo, State, StateCreateFavorite } from 'common'
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -29,10 +34,52 @@ const useStyles = makeStyles(() => ({
 }))
 
 const App: React.FC<AllProps> = () => {
+	const { sessionInfo = initialState.sessionInfo as SessionInfo, createFavorite = initialState.createFavorite as StateCreateFavorite } = useSelector(
+		(state: State) => state
+	)
 	const classes = useStyles()
 
-	const { route = initialState.route as RouteConfig } = useSelector((state: State) => state)
 	const { text, status } = useCurrentLanguagePack()
+
+	// const dispatch = useDispatch()
+
+	// useEffect(() => {
+	// 	if (sessionInfo.listId === -1) {
+	// 		dispatch(
+	// 			actionCreateFavorite({
+	// 				auth: {
+	// 					requestToken: sessionInfo.requestToken,
+	// 				},
+	// 				body: {
+	// 					name: 'This is my awesome list.',
+	// 					description: 'Just an awesome list.',
+	// 					language: status,
+	// 				},
+	// 			})
+	// 		)
+	// 	}
+	// }, [])
+
+	// useEffect(() => {
+	// 	if (createFavorite.statusCode === 200 && createFavorite.result) {
+	// 		window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
+	// 			sessionId: createFavorite.result.session_id,
+	// 			listId: createFavorite.result.list_id,
+	// 		}))
+	// 	}
+	// }, [createFavorite, sessionInfo])
+
+	useEffect(() => {
+		const fetchLocalStorageItem = window.localStorage.getItem(LOCAL_STORAGE_KEY)
+		if (!fetchLocalStorageItem) {
+			window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
+				sessionId: sessionInfo.sessionId,
+				listId: sessionInfo.listId,
+			}))
+		}
+	}, [])
+
+	const { route = initialState.route as RouteConfig } = useSelector((state: State) => state)
 	const currentUri = `${window.location.origin}${window.location.pathname}`
 
 	return (

@@ -9,27 +9,29 @@ import {
 	errorListFavorite,
 	errorRemoveFavorite,
 	FavoriteAddFailureAction,
-
-  FavoriteAddRequestAction,
+	FavoriteAddRequestAction,
 	FavoriteCreateFailureAction,
 	FavoriteCreateRequestAction,
 	FavoriteListFailureAction,
 	FavoriteListRequestAction,
-
-  FavoriteRemoveFailureAction,
+	FavoriteRemoveFailureAction,
 	FavoriteRemoveRequestAction,
 	FAVORITE_ADD_REQUEST,
 	FAVORITE_CREATE_REQUEST,
 	FAVORITE_LIST_REQUEST,
-
-  FAVORITE_REMOVE_REQUEST,
+	FAVORITE_REMOVE_REQUEST,
 	setAddFavorite,
 	setCreateFavorite,
 	setListFavorite,
 	setRemoveFavorite,
 } from 'client/actions/Favorite'
 
-import { requestAddFavorite, requestCreateFavorite, requestListFavorite, requestRemoveFavorite } from 'client/services'
+import {
+	requestAddFavorite,
+	requestCreateFavorite,
+	requestListFavorite,
+	requestRemoveFavorite,
+} from 'client/services'
 
 // interfaces
 import { Action } from 'common'
@@ -56,9 +58,12 @@ export const addCreateFavoriteAddEpic: TEpic = (
 	action$.ofType(FAVORITE_CREATE_REQUEST).pipe(
 		mergeMap((action: FavoriteCreateRequestAction) =>
 			defer(() => requestCreateFavorite(action.payload)).pipe(
-				map((responseCreateFavorite: ResCreateFavorite) => setCreateFavorite(responseCreateFavorite)),
+				map((responseCreateFavorite: ResCreateFavorite) =>
+					setCreateFavorite(responseCreateFavorite)
+				),
 				catchError(
-					(error: AxiosError): Observable<FavoriteCreateFailureAction> => of(errorCreateFavorite(error))
+					(error: AxiosError): Observable<FavoriteCreateFailureAction> =>
+						of(errorCreateFavorite(error))
 				)
 			)
 		)
@@ -70,9 +75,12 @@ export const addRemoveFavoriteAddEpic: TEpic = (
 	action$.ofType(FAVORITE_REMOVE_REQUEST).pipe(
 		mergeMap((action: FavoriteRemoveRequestAction) =>
 			defer(() => requestRemoveFavorite(action.payload)).pipe(
-				map((responseRemoveFavorite: ResRemoveFavorite) => setRemoveFavorite(responseRemoveFavorite)),
+				map((responseRemoveFavorite: ResRemoveFavorite) =>
+					setRemoveFavorite(responseRemoveFavorite)
+				),
 				catchError(
-					(error: AxiosError): Observable<FavoriteRemoveFailureAction> => of(errorRemoveFavorite(error))
+					(error: AxiosError): Observable<FavoriteRemoveFailureAction> =>
+						of(errorRemoveFavorite(error))
 				)
 			)
 		)

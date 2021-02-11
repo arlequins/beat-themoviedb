@@ -5,18 +5,15 @@ import {
 	FavoriteAddSuccessAction,
 	FavoriteCreateFailureAction,
 	FavoriteCreateSuccessAction,
-
-  FavoriteListFailureAction,
+	FavoriteListFailureAction,
 	FavoriteListSuccessAction,
 	FavoriteRemoveFailureAction,
 	FavoriteRemoveSuccessAction,
-
-  FAVORITE_ADD_FAILURE,
+	FAVORITE_ADD_FAILURE,
 	FAVORITE_ADD_SUCCESS,
 	FAVORITE_CREATE_FAILURE,
 	FAVORITE_CREATE_SUCCESS,
-
-  FAVORITE_LIST_FAILURE,
+	FAVORITE_LIST_FAILURE,
 	FAVORITE_LIST_SUCCESS,
 	FAVORITE_REMOVE_FAILURE,
 	FAVORITE_REMOVE_SUCCESS,
@@ -24,10 +21,7 @@ import {
 
 export default {
 	reducersMapObject: {
-		[FAVORITE_ADD_SUCCESS]: (
-			state: State,
-			{ responseAddFavorite }: FavoriteAddSuccessAction
-		) => {
+		[FAVORITE_ADD_SUCCESS]: (state: State, { responseAddFavorite }: FavoriteAddSuccessAction) => {
 			return {
 				...state,
 				addFavorite: {
@@ -60,7 +54,7 @@ export default {
 			}
 		},
 
-    [FAVORITE_CREATE_SUCCESS]: (
+		[FAVORITE_CREATE_SUCCESS]: (
 			state: State,
 			{ responseCreateFavorite }: FavoriteCreateSuccessAction
 		) => {
@@ -96,7 +90,7 @@ export default {
 			}
 		},
 
-    [FAVORITE_REMOVE_SUCCESS]: (
+		[FAVORITE_REMOVE_SUCCESS]: (
 			state: State,
 			{ responseRemoveFavorite }: FavoriteRemoveSuccessAction
 		) => {
@@ -132,7 +126,7 @@ export default {
 			}
 		},
 
-    [FAVORITE_LIST_SUCCESS]: (
+		[FAVORITE_LIST_SUCCESS]: (
 			state: State,
 			{ responseListFavorite }: FavoriteListSuccessAction
 		) => {

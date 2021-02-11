@@ -88,6 +88,19 @@ detail
 https://material-ui.com/getting-started/templates/album/
 ```
 
+### favorite
+- for use api, request_token needed.
+- redirect url is not exist, therefore I approved and use that token.
+- https://www.themoviedb.org/authenticate/c155ed72cbaa7640813d7b125476543cae4d1459
+```
+sessionInfo: {
+  requestToken: 'c155ed72cbaa7640813d7b125476543cae4d1459',
+  sessionId: 'a05fcd7a6c560bc31c453d3d44ca56ae35e3f2a9',
+  listId: 7076642,
+}
+```
+
+
 ## run command
 
 ```

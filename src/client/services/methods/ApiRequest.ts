@@ -16,18 +16,22 @@ export default methods.reduce(
 				Accept: 'application/json',
 				'Content-Type': 'application/json;charset=utf-8',
 			}
-			const query = queryString.stringify(requestBody.query ? {
-				api_key: apiKey,
-				...requestBody.query,
-			} : {
-				api_key: apiKey,
-			})
+			const query = queryString.stringify(
+				requestBody && requestBody.query
+					? {
+							api_key: apiKey,
+							...requestBody.query,
+					  }
+					: {
+							api_key: apiKey,
+					  }
+			)
 			const requestUrl = query.length > 0 ? `${endpoint}?${query}` : endpoint
 
 			const response: AxiosResponse = await axios(requestUrl, {
 				method,
 				...{
-					data: method === 'get' ? undefined : requestBody.body ? requestBody.body : {},
+					data: method === 'get' ? undefined : requestBody && requestBody.body ? requestBody.body : {},
 					headers: {
 						...common,
 					},
