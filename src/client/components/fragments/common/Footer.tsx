@@ -25,26 +25,26 @@ const Copyright = () => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  footer: {
-    padding: theme.spacing(3, 2),
-    marginTop: 'auto',
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
-  },
+	footer: {
+		padding: theme.spacing(3, 2),
+		marginTop: 'auto',
+		backgroundColor:
+			theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+	},
 }))
 
 const Footer: React.FC<AllProps> = () => {
 	const { text } = useCurrentLanguagePack()
 	const classes = useStyles()
 
-  return (
+	return (
 		<footer className={classes.footer}>
 			<Container maxWidth="sm">
 				<Typography variant="body1">{text.info.footerTitle}</Typography>
 				<Copyright />
 			</Container>
 		</footer>
-  )
+	)
 }
 
 export default Footer

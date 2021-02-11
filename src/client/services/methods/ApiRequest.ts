@@ -14,19 +14,20 @@ export default methods.reduce(
 		[method]: async (endpoint: string, apiKey: string, requestBody?: any) => {
 			const common = {
 				Accept: 'application/json',
-				'Content-Type': 'application/x-www-form-urlencoded',
+				'Content-Type': 'application/json;charset=utf-8',
 			}
-			const query = queryString.stringify({
+			const query = queryString.stringify(requestBody.query ? {
 				api_key: apiKey,
-				...requestBody,
+				...requestBody.query,
+			} : {
+				api_key: apiKey,
 			})
-			const requestUrl =
-				method === 'get' ? (query.length > 0 ? `${endpoint}?${query}` : endpoint) : endpoint
+			const requestUrl = query.length > 0 ? `${endpoint}?${query}` : endpoint
 
 			const response: AxiosResponse = await axios(requestUrl, {
 				method,
 				...{
-					data: method === 'get' ? '' : query,
+					data: method === 'get' ? undefined : requestBody.body ? requestBody.body : {},
 					headers: {
 						...common,
 					},

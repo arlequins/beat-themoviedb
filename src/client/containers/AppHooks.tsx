@@ -21,11 +21,11 @@ import { AllProps, State } from 'common'
 import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles(() => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-  },
+	root: {
+		display: 'flex',
+		flexDirection: 'column',
+		minHeight: '100vh',
+	},
 }))
 
 const App: React.FC<AllProps> = () => {

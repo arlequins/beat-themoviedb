@@ -105,7 +105,13 @@ const BlogSearchPart: React.FC<AllProps> = () => {
 		return <ErrorPage text="NO RESULTS" />
 	}
 
-	const countText = [total_results === 10000 ? text.info.overCount : '', `${total_results}`, text.info.countText].filter((str: string) => str.length > 0).join(' ')
+	const countText = [
+		total_results === 10000 ? text.info.overCount : '',
+		`${total_results}`,
+		text.info.countText,
+	]
+		.filter((str: string) => str.length > 0)
+		.join(' ')
 
 	return (
 		<main className={classes.paper}>
@@ -118,9 +124,15 @@ const BlogSearchPart: React.FC<AllProps> = () => {
 				))}
 			</Grid>
 
-			<Pagination count={total_pages} page={currentPage} color="primary" className={classes.pager} onChange={(_event: React.ChangeEvent<unknown>, value: number) => {
-				setCurrentPage(value)
-			}}/>
+			<Pagination
+				count={total_pages}
+				page={currentPage}
+				color="primary"
+				className={classes.pager}
+				onChange={(_event: React.ChangeEvent<unknown>, value: number) => {
+					setCurrentPage(value)
+				}}
+			/>
 		</main>
 	)
 }

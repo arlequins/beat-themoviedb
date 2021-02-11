@@ -53,19 +53,24 @@ interface Props {
 	voteCount?: number
 }
 
-const MainFeaturedPost: React.FC<AllProps & Props> = ({ imgUri = '', title = '', overview = '', releaseDate = '', voteAverage = 0, voteCount = 0 }) => {
+const MainFeaturedPost: React.FC<AllProps & Props> = ({
+	imgUri = '',
+	title = '',
+	overview = '',
+	releaseDate = '',
+	voteAverage = 0,
+	voteCount = 0,
+}) => {
 	const classes = useStyles()
 
 	const { text } = useCurrentLanguagePack()
 
 	if (imgUri.length === 0 || title.length === 0) {
-		return (<></>)
+		return <></>
 	}
 
 	return (
-		<Paper
-			className={classes.mainFeaturedPost}
-		>
+		<Paper className={classes.mainFeaturedPost}>
 			<div className={classes.overlay} />
 
 			<Grid container spacing={3}>
@@ -75,34 +80,46 @@ const MainFeaturedPost: React.FC<AllProps & Props> = ({ imgUri = '', title = '',
 				<Grid item md={8}>
 					<Grid item container direction="row" className={classes.mainFeaturedPostContent}>
 						<Grid item md={10}>
-							<Typography component="h1" variant="h3" color="inherit" display={'inline'} gutterBottom paragraph>
+							<Typography
+								component="h1"
+								variant="h3"
+								color="inherit"
+								display={'inline'}
+								gutterBottom
+								paragraph
+							>
 								{title}
-								<Typography variant="overline" align="center" color="textSecondary" display={'inline'}>
+								<Typography
+									variant="overline"
+									align="center"
+									color="textSecondary"
+									display={'inline'}
+								>
 									({moment(releaseDate).format('YYYY')})
 								</Typography>
 							</Typography>
 						</Grid>
 						{/* will add favorite btn */}
-						<Grid item md={2}>
-
-						</Grid>
+						<Grid item md={2}></Grid>
 						<Grid item md={12} container direction="row" className={classes.reviewArea}>
 							{voteAverage > 0 && (
-							<>
-								<Grid item md={3}>
-									<Rating name="read-only" value={voteAverage} readOnly max={5} precision={0.5} />
-								</Grid>
-								<Grid item md={9}>
-									<Box ml={2}>{voteCount} {text.info.countText}</Box>
-								</Grid>
-							</>
+								<>
+									<Grid item md={3}>
+										<Rating name="read-only" value={voteAverage} readOnly max={5} precision={0.5} />
+									</Grid>
+									<Grid item md={9}>
+										<Box ml={2}>
+											{voteCount} {text.info.countText}
+										</Box>
+									</Grid>
+								</>
 							)}
 						</Grid>
 						<Grid item md={12}>
-							{ overview.length > 0 && (
-							<Typography variant="h5" color="inherit" paragraph>
-								{overview}
-							</Typography>
+							{overview.length > 0 && (
+								<Typography variant="h5" color="inherit" paragraph>
+									{overview}
+								</Typography>
 							)}
 						</Grid>
 					</Grid>

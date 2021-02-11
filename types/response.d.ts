@@ -2,7 +2,67 @@ declare module 'response' {
 
   interface RequestPayload {
     timeout?: number
-    language?: string
+  }
+
+  interface ResCRUD {
+    status_code: number
+    status_message: string
+  }
+
+  interface ReqAddFavoritePayload extends RequestPayload {
+    path: {
+      list_id: string | number
+    }
+    query: {
+      session_id: string
+    }
+    body: {
+      media_id: number // movie_id?
+    }
+  }
+
+  interface ResAddFavorite extends ResCRUD {
+  }
+
+  interface ReqCreateFavoritePayload extends RequestPayload {
+    query: {
+      session_id: string
+    }
+    body: {
+      name?: string
+      description?: string
+      language?: string
+    }
+  }
+
+  interface ResCreateFavorite extends ResCRUD {
+  }
+
+  interface ReqRemoveFavoritePayload extends RequestPayload {
+    path: {
+      list_id: string | number
+    }
+    query: {
+      session_id: string
+    }
+    body: {
+      media_id: number // movie_id?
+    }
+  }
+
+  interface ResRemoveFavorite extends ResCRUD {
+  }
+
+  interface ReqListFavoritePayload extends RequestPayload {
+    path: {
+      list_id: string | number
+    }
+    query: {
+      language: string
+    }
+  }
+
+  interface ResListFavorite extends ResCRUD {
   }
 
   interface ReqSearchMoviesPayload extends RequestPayload {
@@ -12,6 +72,7 @@ declare module 'response' {
     region?: string
     year?: number
     primary_release_year?: number
+    language?: string
   }
 
   interface ResSearchMovies {
@@ -24,6 +85,7 @@ declare module 'response' {
   interface ReqMovieDetailsPayload extends RequestPayload {
     movie_id: number
     append_to_response?: string
+    language?: string
   }
 
   interface ResMovieDetailsGenre {
