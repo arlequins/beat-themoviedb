@@ -9,8 +9,7 @@ export const INITIAL_STATE: State = {
 
 	appConfig: {
 		mode: 'dark',
-		// mode: 'light',
-		lang: 'EN',
+		lang: 'JA',
 	},
 
 	searchMovies: {
