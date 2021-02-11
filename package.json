@@ -57,8 +57,7 @@
     "postversion": "git push && git push --tags",
     "deploy": "npm publish"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@material-ui/lab": "^4.0.0-alpha.57",
     "moment": "^2.29.1",
