@@ -4,21 +4,16 @@ import { MemoryRouter } from 'react-router-dom'
 import * as renderer from 'react-test-renderer'
 
 // client
-import { INITIAL_STATE } from 'client/constants'
 import routes from 'client/routes'
 import { frontendCreateStore } from 'client/store/dev'
+import { initialState } from 'client/store/state'
 
 // components
 import App from 'client/containers/AppHooks'
 
-// interfaces
-import { ExtendedWindow } from 'types/settings'
+initialState.route = routes
 
-const win: ExtendedWindow = (window as unknown) as ExtendedWindow
-const state = win && win.__INITIAL_STATE__ ? win.__INITIAL_STATE__ : INITIAL_STATE
-state.route = routes
-
-const store = frontendCreateStore(state)
+const store = frontendCreateStore(initialState)
 
 describe('App', () => {
 	test('snapshot renders', () => {

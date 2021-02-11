@@ -17,7 +17,6 @@ import { requestSearchMovies } from 'client/services'
 
 // interfaces
 import { Action } from 'common'
-import { ResMovieDetails } from 'response'
 import { TEpic } from 'types/settings'
 
 export const addSearchMoviesEpic: TEpic = (
