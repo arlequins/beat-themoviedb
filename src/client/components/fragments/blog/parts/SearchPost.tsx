@@ -55,12 +55,13 @@ const SearchPost: React.FC<AllProps & Props> = React.memo(
 	}) => {
 		const classes = useStyles()
 
-		const { text } = useCurrentLanguagePack()
+		const { text, status } = useCurrentLanguagePack()
 
 		const countText = [
-			totalResults === 10000 ? text.info.overCount : '',
+			status === 'en' ? (totalResults === 10000 ? text.info.overCount : '') : '',
 			`${totalResults}`,
 			text.info.countText,
+			status !== 'en' ? (totalResults === 10000 ? text.info.overCount : '') : '',
 		]
 			.filter((str: string) => str.length > 0)
 			.join(' ')

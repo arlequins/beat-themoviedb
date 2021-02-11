@@ -111,6 +111,7 @@ declare module 'common' {
     isExist: boolean
     info: {
       headerTitle: string
+      lang: string
       footerTitle: string
       topTitle: string
       searchTitle: string
@@ -125,6 +126,8 @@ declare module 'common' {
       title: string
       desc: string
       keywords: string[]
+			search: string
+			favorite: string
     }
   }
 

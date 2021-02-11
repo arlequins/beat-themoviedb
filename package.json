@@ -1,6 +1,6 @@
 {
   "name": "@arlequins/beat-themoviedb",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0",
   "description": "Created for https://github.com/arlequins/beat-themoviedb",
   "license": "Apache-2.0",
   "author": "An <harlequin.beat@gmail.com> (https://github.com/arlequins)",
@@ -57,12 +57,10 @@
     "postversion": "git push && git push --tags",
     "deploy": "npm publish"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@material-ui/lab": "^4.0.0-alpha.57",
     "moment": "^2.29.1",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-strict-mode": "^7.12.1",
@@ -80,7 +78,6 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/react-test-renderer": "^17.0.0",
     "@types/redux-logger": "^3.0.8",
-    "@types/uuid": "^8.3.0",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "classnames": "^2.2.6",

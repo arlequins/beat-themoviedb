@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from 'uuid'
-
 import { State } from 'common'
 import { RouteConfig } from 'react-router-config'
 
@@ -9,8 +7,7 @@ export const INITIAL_STATE: State = {
 
 	appConfig: {
 		mode: 'dark',
-		// mode: 'light',
-		lang: 'EN',
+		lang: 'JA',
 	},
 
 	searchMovies: {
@@ -75,3 +72,4 @@ export const INITIAL_STATE: State = {
 }
 
 export const LOCAL_STORAGE_KEY = 'beat-themoviedb'
+export const SETTING_STORAGE_KEY = 'beat-themoviedb-env'

@@ -28,7 +28,11 @@ export const requestMovieDetails = async (
 	payload: ReqMovieDetailsPayload
 ): Promise<ResMovieDetails> => {
 	const endpoint = `${env.API_ENDPOINT_URL}/movie/${payload.movie_id}`
-	return await ApiRequest.get(endpoint, env.API_CLIENT_ID)
+	return await ApiRequest.get(endpoint, env.API_CLIENT_ID, {
+		query: {
+			language: payload.language,
+		},
+	})
 }
 
 export const requestAddFavorite = async (
