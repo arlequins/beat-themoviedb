@@ -11,10 +11,6 @@ import { initialState } from 'client/store/state'
 // components
 import App from 'client/containers/AppHooks'
 
-// interfaces
-import { ExtendedWindow } from 'types/settings'
-
-const win: ExtendedWindow = (window as unknown) as ExtendedWindow
 initialState.route = routes
 
 const store = frontendCreateStore(initialState)
