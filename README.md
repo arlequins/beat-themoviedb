@@ -42,7 +42,7 @@
 - [ ] screen(material-ui)
   - [x] top: search input only
   - [x] search: search results
-  - [ ] detail: detail info for movie
+  - [x] detail: detail info for movie
   - [ ] favorite and unfavorite a movie: local storage
 - [ ] package release version
 - [ ] last check
@@ -74,7 +74,18 @@
 
 ### ref
 ```
+all
 https://material-ui.com/getting-started/templates/
+https://www.creative-tim.com/product/material-kit-react
+
+top
+https://material-ui.com/getting-started/templates/sign-in/
+
+search
+https://material-ui.com/getting-started/templates/blog/
+
+detail
+https://material-ui.com/getting-started/templates/album/
 ```
 
 ## run command

@@ -82,6 +82,7 @@ declare module 'common' {
       topTitle: string
       searchTitle: string
       countText: string
+      overCount: string
       searchLabel: string
       submitBtn: string
       searchPlaceholder: string

@@ -58,7 +58,8 @@
     "deploy": "npm publish"
   },
   "dependencies": {
-    "@material-ui/lab": "^4.0.0-alpha.57"
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

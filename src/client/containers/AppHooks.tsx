@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 
 import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { makeStyles } from '@material-ui/core/styles'
 
 // libraries
 import { FLAGSHIP_URL, STATIC_URL } from 'client/constants/Env'
@@ -19,13 +20,23 @@ import Loading from 'client/components/fragments/common/Loading'
 import { AllProps, State } from 'common'
 import { useSelector } from 'react-redux'
 
+const useStyles = makeStyles(() => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+}))
+
 const App: React.FC<AllProps> = () => {
+	const classes = useStyles()
+
 	const { route = initialState.route as RouteConfig } = useSelector((state: State) => state)
 	const { text, status } = useCurrentLanguagePack()
 	const currentUri = `${window.location.origin}${window.location.pathname}`
 
 	return (
-		<main>
+		<main className={classes.root}>
 			{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 			<CssBaseline />
 			<Helmet>
