@@ -1,23 +1,24 @@
 {
   "test": {
     "DOMAIN": "http://localhost:5000",
-    "CDN_URI": "http://localhost:5000",
-    "API_ENDPOINT_URL": "",
-    "API_CLIENT_ID": "",
+    "CDN_URI": "https://www.themoviedb.org/t/p/w440_and_h660_face",
+    "API_ENDPOINT_URL": "https://api.themoviedb.org/3",
+    "API_CLIENT_ID": "13c535b5d2febad441bee0e33e041239",
+
     "DEFAULT_LANG": "ja"
   },
   "development": {
     "DOMAIN": "http://localhost:5000",
-    "CDN_URI": "http://localhost:5000",
-    "API_ENDPOINT_URL": "",
-    "API_CLIENT_ID": "",
+    "CDN_URI": "https://www.themoviedb.org/t/p/w440_and_h660_face",
+    "API_ENDPOINT_URL": "https://api.themoviedb.org/3",
+    "API_CLIENT_ID": "13c535b5d2febad441bee0e33e041239",
     "DEFAULT_LANG": "ja"
   },
   "production": {
     "DOMAIN": "http://localhost:3000",
-    "CDN_URI": "http://localhost:3000",
-    "API_ENDPOINT_URL": "",
-    "API_CLIENT_ID": "",
+    "CDN_URI": "https://www.themoviedb.org/t/p/w440_and_h660_face",
+    "API_ENDPOINT_URL": "https://api.themoviedb.org/3",
+    "API_CLIENT_ID": "13c535b5d2febad441bee0e33e041239",
     "DEFAULT_LANG": "ja"
   }
 }

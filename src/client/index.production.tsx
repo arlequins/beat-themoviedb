@@ -3,30 +3,30 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
 
+import { ThemeProvider } from '@material-ui/core/styles'
+
 // client
-import { INITIAL_STATE } from 'client/constants'
 import routes from 'client/routes'
 import { frontendCreateStore } from 'client/store/prod'
+import { initialState } from 'client/store/state'
 
 // components
 import Loading from 'client/components/fragments/common/Loading'
+import Theme from 'client/helpers/Theme'
 
 // interface
-import { State } from 'common'
 import { BrowserRouter } from 'react-router-dom'
-import { ExtendedWindow } from 'types/settings'
 
-const win: ExtendedWindow = (window as unknown) as ExtendedWindow
-const state: State = win && win.__INITIAL_STATE__ ? win.__INITIAL_STATE__ : INITIAL_STATE
-state.route = routes
-
-const store = frontendCreateStore(state)
+initialState.route = routes
+const store = frontendCreateStore(initialState)
 
 render(
-	<Provider store={store}>
-		<React.Suspense fallback={<Loading />}>
-			<BrowserRouter>{renderRoutes([routes])}</BrowserRouter>
-		</React.Suspense>
-	</Provider>,
+	<ThemeProvider theme={Theme(initialState.appConfig ? initialState.appConfig.mode : 'light')}>
+		<Provider store={store}>
+			<React.Suspense fallback={<Loading />}>
+				<BrowserRouter>{renderRoutes([routes])}</BrowserRouter>
+			</React.Suspense>
+		</Provider>
+	</ThemeProvider>,
 	document.getElementById('app')
 )

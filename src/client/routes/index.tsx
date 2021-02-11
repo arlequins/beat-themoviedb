@@ -4,6 +4,12 @@ const App = lazy(() => import(/* webpackChunkName: "page-app" */ 'client/contain
 const BlogTop = lazy(() =>
 	import(/* webpackChunkName: "page-blog-top" */ 'client/containers/BlogTop')
 )
+const BlogSearch = lazy(() =>
+	import(/* webpackChunkName: "page-blog-search" */ 'client/containers/BlogSearch')
+)
+const BlogFavorite = lazy(() =>
+	import(/* webpackChunkName: "page-blog-favorite" */ 'client/containers/BlogFavorite')
+)
 const BlogDetail = lazy(() =>
 	import(/* webpackChunkName: "page-blog-detail" */ 'client/containers/BlogDetail')
 )
@@ -20,12 +26,17 @@ export default {
 			component: BlogTop,
 		},
 		{
-			path: `/section/:sectionName`,
+			path: `/search/:keyword`,
 			exact: true,
-			component: BlogTop,
+			component: BlogSearch,
 		},
 		{
-			path: `/p:id`,
+			path: `/favorite`,
+			exact: true,
+			component: BlogFavorite,
+		},
+		{
+			path: `/m:id`,
 			exact: true,
 			component: BlogDetail,
 		},

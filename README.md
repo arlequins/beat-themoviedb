@@ -33,12 +33,73 @@
 
 ## Check List
 
-[x] base(package and so on)
-[x] redux(api)
-[x] package and express
-[ ] screen(material-ui)
-[ ] deploy
-[ ] last check
+- [x] base(package and so on)
+- [x] redux(api)
+  - [x] search: search results
+  - [x] detail: detail info for movie
+  - [x] api response types
+- [x] package and express
+- [ ] screen(material-ui)
+  - [x] top: search input only
+  - [x] search: search results
+  - [x] detail: detail info for movie
+  - [x] favorite and unfavorite a movie: local storage
+- [ ] package release version
+- [ ] last check
+
+
+## api info
+
+
+### auth
+- API Key (v3 auth): 13c535b5d2febad441bee0e33e041239
+- Example API Request: https://api.themoviedb.org/3/movie/550?api_key=13c535b5d2febad441bee0e33e041239
+- API Read Access Token (v4 auth): eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxM2M1MzViNWQyZmViYWQ0NDFiZWUwZTMzZTA0MTIzOSIsInN1YiI6IjYwMjFkZTE5OWQyYjYzMDAzZTYyNjBjNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.-AkCJ7pxmZTbVER7FFZUe8P80vxSsjtg-vP1lDFKtak
+
+
+### example request
+
+
+#### list
+- https://developers.themoviedb.org/3/search/search-movies
+  - https://api.themoviedb.org/3/search/movie?api_key=13c535b5d2febad441bee0e33e041239&query=a&language=ja
+  - https://api.themoviedb.org/3/search/movie?api_key=13c535b5d2febad441bee0e33e041239&query=a&language=en
+&language=de
+
+
+#### detail
+- https://developers.themoviedb.org/3/movies/get-movie-details
+  - https://api.themoviedb.org/3/movie/{movie_id}?api_key={apikey}
+
+
+### ref
+```
+all
+https://material-ui.com/getting-started/templates/
+https://www.creative-tim.com/product/material-kit-react
+
+top
+https://material-ui.com/getting-started/templates/sign-in/
+
+search
+https://material-ui.com/getting-started/templates/blog/
+
+detail
+https://material-ui.com/getting-started/templates/album/
+```
+
+### favorite
+- for use api, request_token needed.
+- redirect url is not exist, therefore I approved and use that token.
+- https://www.themoviedb.org/authenticate/c155ed72cbaa7640813d7b125476543cae4d1459
+```
+sessionInfo: {
+  requestToken: 'c155ed72cbaa7640813d7b125476543cae4d1459',
+  sessionId: 'a05fcd7a6c560bc31c453d3d44ca56ae35e3f2a9',
+  listId: 7076642,
+}
+```
+
 
 ## run command
 
