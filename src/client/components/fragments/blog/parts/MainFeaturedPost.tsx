@@ -163,15 +163,15 @@ const MainFeaturedPost: React.FC<AllProps & Props> = ({
 								paragraph
 							>
 								{title}
-								{(releaseDate && releaseDate.length > 0) && (
-								<Typography
-									variant="overline"
-									align="center"
-									color="textSecondary"
-									display={'inline'}
-								>
-									({moment(releaseDate, 'YYYY-MM-DD').format('YYYY')})
-								</Typography>
+								{releaseDate && releaseDate.length > 0 && (
+									<Typography
+										variant="overline"
+										align="center"
+										color="textSecondary"
+										display={'inline'}
+									>
+										({moment(releaseDate, 'YYYY-MM-DD').format('YYYY')})
+									</Typography>
 								)}
 							</Typography>
 						</Grid>

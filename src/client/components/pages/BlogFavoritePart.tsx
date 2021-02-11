@@ -17,11 +17,12 @@ import ErrorPage from 'client/containers/common/ErrorPage'
 import { AllProps, SessionInfo, State, StateListFavorite } from 'common'
 
 const BlogSearchPart: React.FC<AllProps> = () => {
-	const { listFavorite = initialState.listFavorite as StateListFavorite, 		sessionInfo = initialState.sessionInfo as SessionInfo } = useSelector(
-		(state: State) => state
-	)
+	const {
+		listFavorite = initialState.listFavorite as StateListFavorite,
+		sessionInfo = initialState.sessionInfo as SessionInfo,
+	} = useSelector((state: State) => state)
 
-  const { status } = useCurrentLanguagePack()
+	const { status } = useCurrentLanguagePack()
 
 	const [isLoading, setIsLoading] = useState(false)
 

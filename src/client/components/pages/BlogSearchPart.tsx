@@ -78,7 +78,16 @@ const BlogSearchPart: React.FC<AllProps> = () => {
 		return <ErrorPage text="NO RESULTS" />
 	}
 
-	return <SearchPost results={results} totalPages={total_pages} totalResults={total_results} area="search" currentPage={currentPage} setCurrentPage={setCurrentPage} />
+	return (
+		<SearchPost
+			results={results}
+			totalPages={total_pages}
+			totalResults={total_results}
+			area="search"
+			currentPage={currentPage}
+			setCurrentPage={setCurrentPage}
+		/>
+	)
 }
 
 export default BlogSearchPart
