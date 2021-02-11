@@ -43,7 +43,6 @@ export const requestAddFavorite = async (
 export const requestCreateFavorite = async (
 	payload: ReqCreateFavoritePayload
 ): Promise<ResCreateFavorite> => {
-
 	// const requestTokenRequestEndpoint = `${env.API_ENDPOINT_URL}/authentication/token/new`
 	// const createRequestTokenRequest = await ApiRequest.get(requestTokenRequestEndpoint, env.API_CLIENT_ID, {
 	// 	query: {},
@@ -75,9 +74,9 @@ export const requestCreateFavorite = async (
 			session_id: sessionId,
 		},
 		body: {
-      name: payload.body.name,
-      description: payload.body.description,
-      language: payload.body.language,
+			name: payload.body.name,
+			description: payload.body.description,
+			language: payload.body.language,
 		},
 	})
 	return response

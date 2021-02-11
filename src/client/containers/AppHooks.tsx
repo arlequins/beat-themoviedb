@@ -34,9 +34,10 @@ const useStyles = makeStyles(() => ({
 }))
 
 const App: React.FC<AllProps> = () => {
-	const { sessionInfo = initialState.sessionInfo as SessionInfo, createFavorite = initialState.createFavorite as StateCreateFavorite } = useSelector(
-		(state: State) => state
-	)
+	const {
+		sessionInfo = initialState.sessionInfo as SessionInfo,
+		createFavorite = initialState.createFavorite as StateCreateFavorite,
+	} = useSelector((state: State) => state)
 	const classes = useStyles()
 
 	const { text, status } = useCurrentLanguagePack()
@@ -72,10 +73,13 @@ const App: React.FC<AllProps> = () => {
 	useEffect(() => {
 		const fetchLocalStorageItem = window.localStorage.getItem(LOCAL_STORAGE_KEY)
 		if (!fetchLocalStorageItem) {
-			window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
-				sessionId: sessionInfo.sessionId,
-				listId: sessionInfo.listId,
-			}))
+			window.localStorage.setItem(
+				LOCAL_STORAGE_KEY,
+				JSON.stringify({
+					sessionId: sessionInfo.sessionId,
+					listId: sessionInfo.listId,
+				})
+			)
 		}
 	}, [])
 

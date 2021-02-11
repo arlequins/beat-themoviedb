@@ -6,13 +6,16 @@ import { ExtendedWindow } from 'types/settings'
 
 const win: ExtendedWindow = (window as unknown) as ExtendedWindow
 
-const state: State =
-	win && win.__INITIAL_STATE__ ? win.__INITIAL_STATE__ : INITIAL_STATE
+const state: State = win && win.__INITIAL_STATE__ ? win.__INITIAL_STATE__ : INITIAL_STATE
 
 const fetchLocalStorageItem = window.localStorage.getItem(LOCAL_STORAGE_KEY)
 const parseFetchedSessionInfo = fetchLocalStorageItem ? JSON.parse(fetchLocalStorageItem) : false
 
-if (parseFetchedSessionInfo && parseFetchedSessionInfo.listId && parseFetchedSessionInfo.listId !== -1) {
+if (
+	parseFetchedSessionInfo &&
+	parseFetchedSessionInfo.listId &&
+	parseFetchedSessionInfo.listId !== -1
+) {
 	state.sessionInfo = parseFetchedSessionInfo
 }
 

@@ -31,7 +31,8 @@ export default methods.reduce(
 			const response: AxiosResponse = await axios(requestUrl, {
 				method,
 				...{
-					data: method === 'get' ? undefined : requestBody && requestBody.body ? requestBody.body : {},
+					data:
+						method === 'get' ? undefined : requestBody && requestBody.body ? requestBody.body : {},
 					headers: {
 						...common,
 					},
