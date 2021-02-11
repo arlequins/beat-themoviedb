@@ -139,4 +139,11 @@ declare module 'common' {
   interface QueryStringBlogSearch {
     page: number
   }
+
+  interface Section {
+    title: string
+    url: string
+    id: number
+    name: string
+  }
 }

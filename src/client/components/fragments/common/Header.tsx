@@ -1,6 +1,6 @@
 import React from 'react'
 
-// import Button from '@material-ui/core/Button'
+import Grid from '@material-ui/core/Grid'
 import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -10,16 +10,29 @@ import Typography from '@material-ui/core/Typography'
 import { useCurrentLanguagePack } from 'client/components/custom/hooks'
 
 // interface
-import { AllProps } from 'common'
+import { AllProps, Section } from 'common'
 
 const useStyles = makeStyles((theme) => ({
 	toolbar: {
 		borderBottom: `1px solid ${theme.palette.divider}`,
 	},
+	toolbarSecondary: {
+		justifyContent: 'space-between',
+		overflowX: 'auto',
+	},
 	toolbarTitle: {
 		flex: 1,
 	},
+	toolbarLink: {
+		padding: theme.spacing(1),
+		flexShrink: 0,
+	},
 }))
+
+const sections = [
+	{ title: 'Search', url: `/`, name: 'search', id: 0 },
+	{ title: 'Favorite', url: `/favorite`, name: 'favorite', id: 1 },
+]
 
 const Header: React.FC<AllProps> = () => {
 	const { text } = useCurrentLanguagePack()
@@ -40,10 +53,29 @@ const Header: React.FC<AllProps> = () => {
 						{text.info.headerTitle}
 					</Link>
 				</Typography>
-				{/* <Button variant="outlined" size="small">
-          Sign up
-        </Button> */}
 			</Toolbar>
+			<Grid container spacing={3}>
+				<Grid item md={4} />
+				<Grid item md={4}>
+					<Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+						{sections.map((section: Section) => {
+							return (
+								<Link
+									color="textSecondary"
+									noWrap
+									key={section.title}
+									variant="body2"
+									href={section.url}
+									className={classes.toolbarLink}
+								>
+									{section.title}
+								</Link>
+							)
+						})}
+					</Toolbar>
+				</Grid>
+				<Grid item md={4} />
+			</Grid>
 		</React.Fragment>
 	)
 }

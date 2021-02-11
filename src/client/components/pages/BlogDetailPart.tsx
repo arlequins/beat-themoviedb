@@ -44,9 +44,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const BlogDetailPart: React.FC<AllProps> = () => {
-	const { sessionInfo = initialState.sessionInfo as SessionInfo, movieDetails = initialState.movieDetails as StateMovieDetails } = useSelector(
-		(state: State) => state
-	)
+	const {
+		sessionInfo = initialState.sessionInfo as SessionInfo,
+		movieDetails = initialState.movieDetails as StateMovieDetails,
+	} = useSelector((state: State) => state)
 
 	const classes = useStyles()
 

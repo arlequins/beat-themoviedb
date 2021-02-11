@@ -7,6 +7,9 @@ const BlogTop = lazy(() =>
 const BlogSearch = lazy(() =>
 	import(/* webpackChunkName: "page-blog-search" */ 'client/containers/BlogSearch')
 )
+const BlogFavorite = lazy(() =>
+	import(/* webpackChunkName: "page-blog-favorite" */ 'client/containers/BlogFavorite')
+)
 const BlogDetail = lazy(() =>
 	import(/* webpackChunkName: "page-blog-detail" */ 'client/containers/BlogDetail')
 )
@@ -26,6 +29,11 @@ export default {
 			path: `/search/:keyword`,
 			exact: true,
 			component: BlogSearch,
+		},
+		{
+			path: `/favorite`,
+			exact: true,
+			component: BlogFavorite,
 		},
 		{
 			path: `/m:id`,

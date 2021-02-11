@@ -13,14 +13,25 @@ import Rating from '@material-ui/lab/Rating'
 import moment from 'moment'
 
 // actions
-import { addFavorite as actionAddFavorite, listFavorite as actionListFavorite, removeFavorite as actionRemoveFavorite } from 'client/actions'
+import {
+	addFavorite as actionAddFavorite,
+	listFavorite as actionListFavorite,
+	removeFavorite as actionRemoveFavorite,
+} from 'client/actions'
 
 // libraries
 import { initialState } from 'client/store/state'
 
 // interfaces
 import { useCurrentLanguagePack } from 'client/components/custom/hooks'
-import { AllProps, SessionInfo, State, StateAddFavorite, StateListFavorite, StateRemoveFavorite } from 'common'
+import {
+	AllProps,
+	SessionInfo,
+	State,
+	StateAddFavorite,
+	StateListFavorite,
+	StateRemoveFavorite,
+} from 'common'
 import { useDispatch, useSelector } from 'react-redux'
 import { ResSearchMoviesDetail } from 'response'
 
@@ -76,10 +87,11 @@ const MainFeaturedPost: React.FC<AllProps & Props> = ({
 	voteCount = 0,
 	sessionInfo = {} as SessionInfo,
 }) => {
-	const { listFavorite = initialState.listFavorite as StateListFavorite, removeFavorite = initialState.removeFavorite as StateRemoveFavorite,
-		addFavorite = initialState.addFavorite as StateAddFavorite } = useSelector(
-		(state: State) => state
-	)
+	const {
+		listFavorite = initialState.listFavorite as StateListFavorite,
+		removeFavorite = initialState.removeFavorite as StateRemoveFavorite,
+		addFavorite = initialState.addFavorite as StateAddFavorite,
+	} = useSelector((state: State) => state)
 	const classes = useStyles()
 
 	const [listFavoriteItems, setListFavoriteItems] = useState([] as ResSearchMoviesDetail[])
@@ -103,7 +115,10 @@ const MainFeaturedPost: React.FC<AllProps & Props> = ({
 
 	useEffect(() => {
 		if (listFavorite.statusCode === 200) {
-			const items = listFavorite.result && listFavorite.result.items && listFavorite.result.items.length > 0 ? listFavorite.result.items : []
+			const items =
+				listFavorite.result && listFavorite.result.items && listFavorite.result.items.length > 0
+					? listFavorite.result.items
+					: []
 			const filterWithId = items.filter((item: ResSearchMoviesDetail) => item.id === id)
 			setListFavoriteItems(filterWithId)
 		}
@@ -148,51 +163,61 @@ const MainFeaturedPost: React.FC<AllProps & Props> = ({
 								paragraph
 							>
 								{title}
+								{(releaseDate && releaseDate.length > 0) && (
 								<Typography
 									variant="overline"
 									align="center"
 									color="textSecondary"
 									display={'inline'}
 								>
-									({moment(releaseDate).format('YYYY')})
+									({moment(releaseDate, 'YYYY-MM-DD').format('YYYY')})
 								</Typography>
+								)}
 							</Typography>
 						</Grid>
 						{/* will add favorite btn */}
 						<Grid item md={2}>
-							<Button variant="contained" color="primary" onClick={(_event: any) => {
-								const divider = listFavoriteItems.length > 0 ? true : false
-								if (!divider) {
-									dispatch(
-										actionAddFavorite({
-											path: {
-												list_id: sessionInfo.listId,
-											},
-											query: {
-												session_id: sessionInfo.sessionId,
-											},
-											body: {
-												media_id: id, // movie_id?
-											},
-										})
-									)
-								} else {
-									dispatch(
-										actionRemoveFavorite({
-											path: {
-												list_id: sessionInfo.listId,
-											},
-											query: {
-												session_id: sessionInfo.sessionId,
-											},
-											body: {
-												media_id: id, // movie_id?
-											},
-										})
-									)
-								}
-							}}>
-								{listFavoriteItems.length > 0 ? (<FavoriteIcon fontSize="large" />) : (<FavoriteBorderIcon fontSize="large" />)}
+							<Button
+								variant="contained"
+								color="primary"
+								onClick={(_event: any) => {
+									const divider = listFavoriteItems.length > 0 ? true : false
+									if (!divider) {
+										dispatch(
+											actionAddFavorite({
+												path: {
+													list_id: sessionInfo.listId,
+												},
+												query: {
+													session_id: sessionInfo.sessionId,
+												},
+												body: {
+													media_id: id, // movie_id?
+												},
+											})
+										)
+									} else {
+										dispatch(
+											actionRemoveFavorite({
+												path: {
+													list_id: sessionInfo.listId,
+												},
+												query: {
+													session_id: sessionInfo.sessionId,
+												},
+												body: {
+													media_id: id, // movie_id?
+												},
+											})
+										)
+									}
+								}}
+							>
+								{listFavoriteItems.length > 0 ? (
+									<FavoriteIcon fontSize="large" />
+								) : (
+									<FavoriteBorderIcon fontSize="large" />
+								)}
 								{text.info.likeText}
 							</Button>
 						</Grid>
