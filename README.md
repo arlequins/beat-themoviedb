@@ -44,8 +44,8 @@
   - [x] search: search results
   - [x] detail: detail info for movie
   - [x] favorite and unfavorite a movie: local storage
-- [ ] package release version
-- [ ] last check
+- [x] package release version
+- [x] last check
 
 
 ## api info
