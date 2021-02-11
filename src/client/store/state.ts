@@ -1,4 +1,4 @@
-import { INITIAL_STATE, LOCAL_STORAGE_KEY } from 'client/constants'
+import { INITIAL_STATE, LOCAL_STORAGE_KEY, SETTING_STORAGE_KEY } from 'client/constants'
 
 // interfaces
 import { State } from 'common'
@@ -17,6 +17,15 @@ if (
 	parseFetchedSessionInfo.listId !== -1
 ) {
 	state.sessionInfo = parseFetchedSessionInfo
+}
+
+const fetchEnvLocalStorageItem = window.localStorage.getItem(SETTING_STORAGE_KEY)
+const parseFetchedEnvInfo = fetchEnvLocalStorageItem ? JSON.parse(fetchEnvLocalStorageItem) : false
+
+if (parseFetchedEnvInfo && parseFetchedEnvInfo.mode) {
+	state.appConfig = parseFetchedEnvInfo
+} else {
+	window.localStorage.setItem(SETTING_STORAGE_KEY, JSON.stringify(state.appConfig))
 }
 
 export const initialState = state

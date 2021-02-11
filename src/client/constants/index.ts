@@ -75,3 +75,4 @@ export const INITIAL_STATE: State = {
 }
 
 export const LOCAL_STORAGE_KEY = 'beat-themoviedb'
+export const SETTING_STORAGE_KEY = 'beat-themoviedb-env'

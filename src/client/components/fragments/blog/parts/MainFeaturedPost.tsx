@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
 import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import IconButton from '@material-ui/core/IconButton'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -38,8 +38,6 @@ import { ResSearchMoviesDetail } from 'response'
 const useStyles = makeStyles((theme) => ({
 	mainFeaturedPost: {
 		position: 'relative',
-		backgroundColor: theme.palette.grey[800],
-		color: theme.palette.common.white,
 		marginBottom: theme.spacing(4),
 	},
 	imageArea: {
@@ -51,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
 		bottom: 0,
 		right: 0,
 		left: 0,
-		backgroundColor: 'rgba(0,0,0,.3)',
 	},
 	mainFeaturedPostContent: {
 		position: 'relative',
@@ -153,7 +150,7 @@ const MainFeaturedPost: React.FC<AllProps & Props> = ({
 				</Grid>
 				<Grid item md={8}>
 					<Grid item container direction="row" className={classes.mainFeaturedPostContent}>
-						<Grid item md={10}>
+						<Grid item md={9}>
 							<Typography
 								component="h1"
 								variant="h3"
@@ -176,9 +173,8 @@ const MainFeaturedPost: React.FC<AllProps & Props> = ({
 							</Typography>
 						</Grid>
 						{/* will add favorite btn */}
-						<Grid item md={2}>
-							<Button
-								variant="contained"
+						<Grid item md={3}>
+							<IconButton
 								color="primary"
 								onClick={(_event: any) => {
 									const divider = listFavoriteItems.length > 0 ? true : false
@@ -219,7 +215,7 @@ const MainFeaturedPost: React.FC<AllProps & Props> = ({
 									<FavoriteBorderIcon fontSize="large" />
 								)}
 								{text.info.likeText}
-							</Button>
+							</IconButton>
 						</Grid>
 						<Grid item md={12} container direction="row" className={classes.reviewArea}>
 							{voteAverage > 0 && (

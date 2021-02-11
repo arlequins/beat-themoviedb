@@ -13,11 +13,13 @@ import { useLocation } from 'react-router-dom'
 export const useCurrentLanguagePack = (): {
 	text: LanguagePack
 	status: string
+	mode: string
 } => {
 	const { appConfig = initialState.appConfig as AppConfig } = useSelector((state: State) => state)
 	return {
 		text: LANGUAGE_PACK(appConfig.lang),
 		status: setLangText(appConfig.lang),
+		mode: appConfig.mode,
 	}
 }
 
