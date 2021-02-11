@@ -3,18 +3,18 @@ import React from 'react'
 import Divider from '@material-ui/core/Divider'
 
 // components
-import BlogSearchPart from 'client/components/pages/BlogSearchPart'
+import BlogFavoritePart from 'client/components/pages/BlogFavoritePart'
 
 // interface
 import { AllProps } from 'common'
 
-const BlogSearch: React.FC<AllProps> = () => {
+const BlogFavorite: React.FC<AllProps> = () => {
 	return (
 		<>
 			<Divider />
-			<BlogSearchPart />
+			<BlogFavoritePart />
 		</>
 	)
 }
 
-export default BlogSearch
+export default BlogFavorite

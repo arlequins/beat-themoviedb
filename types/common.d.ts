@@ -1,7 +1,9 @@
 declare module 'common' {
 
   import { RouteConfig } from 'react-router-config'
-  import { ErrorResponse, ResMovieDetails, ResSearchMovies } from 'response'
+  import { ErrorResponse, ResMovieDetails, ResSearchMovies, ResAddFavorite, ResCreateFavorite,
+    ResListFavorite,
+    ResRemoveFavorite } from 'response'
 
   interface EnvVariables {
     NODE_ENV: string
@@ -50,16 +52,40 @@ declare module 'common' {
     [key: string]: string[]
   }
 
-  interface StateSearchMovies {
-    statusCode: number,
-    result: ResSearchMovies | undefined,
-    error: ErrorResponse,
+  interface StateResponse {
+    statusCode: number
+    error: ErrorResponse
   }
 
-  interface StateMovieDetails {
-    statusCode: number,
-    result: ResMovieDetails | undefined,
-    error: ErrorResponse,
+
+  interface StateSearchMovies extends StateResponse {
+    result: ResSearchMovies | undefined
+  }
+
+  interface StateMovieDetails extends StateResponse {
+    result: ResMovieDetails | undefined
+  }
+
+  interface StateAddFavorite extends StateResponse {
+    result: ResAddFavorite | undefined
+  }
+
+  interface StateCreateFavorite extends StateResponse {
+    result: ResCreateFavorite | undefined
+  }
+
+  interface StateRemoveFavorite extends StateResponse {
+    result: ResRemoveFavorite | undefined
+  }
+
+  interface StateListFavorite extends StateResponse {
+    result: ResListFavorite | undefined
+  }
+
+  interface SessionInfo {
+		requestToken: string
+		sessionId: string
+		listId: number
   }
 
   interface State extends PreloadedState {
@@ -70,8 +96,15 @@ declare module 'common' {
 
     appConfig?: AppConfig
 
-    searchMovies?: StateSearchMovies,
-    movieDetails?: StateMovieDetails,
+    searchMovies?: StateSearchMovies
+    movieDetails?: StateMovieDetails
+
+    addFavorite?: StateAddFavorite
+    createFavorite?: StateCreateFavorite
+    removeFavorite?: StateRemoveFavorite
+    listFavorite?: StateListFavorite
+
+    sessionInfo?: SessionInfo
   }
 
   interface LanguagePack {
@@ -79,11 +112,38 @@ declare module 'common' {
     info: {
       headerTitle: string
       footerTitle: string
+      topTitle: string
+      searchTitle: string
+      countText: string
+      likeText: string
+      overCount: string
+      searchLabel: string
+      submitBtn: string
+      searchPlaceholder: string
     }
     head: {
       title: string
       desc: string
       keywords: string[]
     }
+  }
+
+  interface ParamsBlogSearch {
+    keyword: string
+  }
+
+  interface ParamsBlogDetail {
+    id: string
+  }
+
+  interface QueryStringBlogSearch {
+    page: number
+  }
+
+  interface Section {
+    title: string
+    url: string
+    id: number
+    name: string
   }
 }

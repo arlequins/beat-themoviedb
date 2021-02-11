@@ -40,10 +40,10 @@
   - [x] api response types
 - [x] package and express
 - [ ] screen(material-ui)
-  - [ ] top: search input only
-  - [ ] search: search results
-  - [ ] detail: detail info for movie
-  - [ ] favorite and unfavorite a movie: local storage
+  - [x] top: search input only
+  - [x] search: search results
+  - [x] detail: detail info for movie
+  - [x] favorite and unfavorite a movie: local storage
 - [ ] package release version
 - [ ] last check
 
@@ -70,6 +70,35 @@
 #### detail
 - https://developers.themoviedb.org/3/movies/get-movie-details
   - https://api.themoviedb.org/3/movie/{movie_id}?api_key={apikey}
+
+
+### ref
+```
+all
+https://material-ui.com/getting-started/templates/
+https://www.creative-tim.com/product/material-kit-react
+
+top
+https://material-ui.com/getting-started/templates/sign-in/
+
+search
+https://material-ui.com/getting-started/templates/blog/
+
+detail
+https://material-ui.com/getting-started/templates/album/
+```
+
+### favorite
+- for use api, request_token needed.
+- redirect url is not exist, therefore I approved and use that token.
+- https://www.themoviedb.org/authenticate/c155ed72cbaa7640813d7b125476543cae4d1459
+```
+sessionInfo: {
+  requestToken: 'c155ed72cbaa7640813d7b125476543cae4d1459',
+  sessionId: 'a05fcd7a6c560bc31c453d3d44ca56ae35e3f2a9',
+  listId: 7076642,
+}
+```
 
 
 ## run command
