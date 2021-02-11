@@ -67,6 +67,15 @@ declare module 'response' {
   }
 
   interface ResListFavorite extends ResCRUD {
+    created_by: string
+    description: string | null
+    favorite_count: number
+    id: number
+    iso_639_1: string
+    item_count: number
+    items: ResSearchMoviesDetail[]
+    name: string
+    poster_path: string | null
   }
 
   interface ReqSearchMoviesPayload extends RequestPayload {

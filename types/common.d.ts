@@ -115,6 +115,7 @@ declare module 'common' {
       topTitle: string
       searchTitle: string
       countText: string
+      likeText: string
       overCount: string
       searchLabel: string
       submitBtn: string

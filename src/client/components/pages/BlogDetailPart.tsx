@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid'
 import Link from '@material-ui/core/Link'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import FavoriteIcon from '@material-ui/icons/Favorite'
 
 // action
 import { addMovieDetails } from 'client/actions'
@@ -23,7 +22,7 @@ import Loading from 'client/components/fragments/common/Loading'
 import ErrorPage from 'client/containers/common/ErrorPage'
 
 // interfaces
-import { AllProps, ParamsBlogDetail, State, StateMovieDetails } from 'common'
+import { AllProps, ParamsBlogDetail, SessionInfo, State, StateMovieDetails } from 'common'
 import { useParams } from 'react-router'
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const BlogDetailPart: React.FC<AllProps> = () => {
-	const { movieDetails = initialState.movieDetails as StateMovieDetails } = useSelector(
+	const { sessionInfo = initialState.sessionInfo as SessionInfo, movieDetails = initialState.movieDetails as StateMovieDetails } = useSelector(
 		(state: State) => state
 	)
 
@@ -96,6 +95,8 @@ const BlogDetailPart: React.FC<AllProps> = () => {
 				voteAverage={detail.vote_average > 0 ? detail.vote_average / 2 : 0}
 				voteCount={detail.vote_count}
 				releaseDate={detail.release_date}
+				id={detail.id}
+				sessionInfo={sessionInfo}
 			/>
 			{detail.homepage && (
 				<div className={classes.heroContent}>

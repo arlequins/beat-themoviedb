@@ -23,7 +23,7 @@ import Header from 'client/components/fragments/common/Header'
 import Loading from 'client/components/fragments/common/Loading'
 
 // interfaces
-import { AllProps, SessionInfo, State, StateCreateFavorite } from 'common'
+import { AllProps, SessionInfo, State } from 'common'
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -36,7 +36,7 @@ const useStyles = makeStyles(() => ({
 const App: React.FC<AllProps> = () => {
 	const {
 		sessionInfo = initialState.sessionInfo as SessionInfo,
-		createFavorite = initialState.createFavorite as StateCreateFavorite,
+		// createFavorite = initialState.createFavorite as StateCreateFavorite,
 	} = useSelector((state: State) => state)
 	const classes = useStyles()
 

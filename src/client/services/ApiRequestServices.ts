@@ -92,7 +92,7 @@ export const requestListFavorite = async (
 export const requestRemoveFavorite = async (
 	payload: ReqRemoveFavoritePayload
 ): Promise<ResRemoveFavorite> => {
-	const endpoint = `${env.API_ENDPOINT_URL}/list/${payload.path.list_id}`
+	const endpoint = `${env.API_ENDPOINT_URL}/list/${payload.path.list_id}/remove_item`
 	return await ApiRequest.post(endpoint, env.API_CLIENT_ID, {
 		query: payload.query,
 		body: payload.body,

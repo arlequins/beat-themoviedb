@@ -40,10 +40,6 @@ export default methods.reduce(
 			})
 
 			const results: any = await response.data
-
-			if (response.status !== 200) {
-				throw new Error(results)
-			}
 			return results
 		},
 	}),
