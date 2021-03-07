@@ -7,7 +7,7 @@ export const env: EnvVariables = {
 	API_CLIENT_ID: process.env.API_CLIENT_ID ? process.env.API_CLIENT_ID : '',
 	DEFAULT_LANG: process.env.DEFAULT_LANG ? process.env.DEFAULT_LANG : 'ja',
 	NODE_ENV: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
-	VERSION: process.env.VERSION ? process.env.VERSION : '1.0.0',
+	VERSION: process.env.VERSION ? process.env.VERSION : '1.0.1',
 }
 
 export const CDN_URL = `${env.DOMAIN}/assets/${env.VERSION}`
